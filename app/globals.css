@@ -78,6 +78,9 @@
   .auth-form {
     @apply flex min-h-screen w-full max-w-[420px] flex-col justify-center gap-5 py-10 md:gap-8;
   }
+  .form-btn {
+    @apply text-16 rounded-lg border border-gitGradient bg-git-gradient font-semibold text-white;
+  }
   .shad-input-label {
     @apply  text-white !important;
   }
@@ -90,6 +93,6 @@
     @apply bg-dark-400 placeholder:text-dark-600 border-dark-500 h-11 focus-visible:ring-0 focus-visible:ring-offset-0;
   }
   .form-link {
-    @apply text-14 cursor-pointer font-medium;
+    @apply text-14 cursor-pointer font-medium text-gitGradient;
   }
 }

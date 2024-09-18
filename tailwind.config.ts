@@ -22,6 +22,11 @@ const config: Config = {
           500: "#24AE7C",
           600: "#0D2A1F",
         },
+        gitGradient: "#0179FE",
+        indigo: {
+          500: "#6172F3",
+          700: "#3538CD",
+        },
         blue: {
           500: "#79B5EC",
           600: "#152432",
@@ -43,6 +48,12 @@ const config: Config = {
           700: "#ABB8C4",
         },
       },
+      backgroundImage: {
+        "git-gradient": "linear-gradient(90deg, #0179FE 0%, #4893FF 100%)",
+        "git-green-gradient":
+          "linear-gradient(90deg, #01797A 0%, #489399 100%)",
+      },
+
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

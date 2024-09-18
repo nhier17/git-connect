@@ -26,7 +26,6 @@ const AuthForm = ({ type }: {type: string}) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
       email: "",
       password: ""
     },
@@ -78,14 +77,14 @@ const AuthForm = ({ type }: {type: string}) => {
           </Link>
 
           <div className="flex flex-col gap-1 md:gap-3">
-            <h1 className="text-24 lg:text-36 font-semibold text-gray-900">
+            <h1 className="text-24 lg:text-36 font-semibold text-gray-200">
               {user 
                 ? 'Link Account'
                 : type === 'sign-in'
                   ? 'Sign In'
                   : 'Sign Up'
               }
-              <p className="text-16 font-normal text-gray-600">
+              <p className="text-16 font-normal text-gray-200">
               Please enter your details
               </p>  
             </h1>
@@ -119,10 +118,30 @@ const AuthForm = ({ type }: {type: string}) => {
           iconSrc="/icons/password.svg"
           iconAlt="user"
         />
-          </>
+         </>
          )} 
+    {type === 'sign-in' && (
+      <>
+        <CustomFormField
+          control={form.control}
+          name="email"
+          label="Email"
+          placeholder="janedoe@gmail.com"
+          iconSrc="/icons/email.svg"
+          iconAlt="email"
+        />
+        <CustomFormField
+          control={form.control}
+          name="password"
+          label="Password"
+          iconSrc="/icons/password.svg"
+          iconAlt="password"
+        />
+      </>
+     )}
+
          <div className="flex flex-col gap-4">
-          <Button disabled={isLoading}>
+          <Button type="submit" disabled={isLoading} className="form-btn">
           {isLoading ? (
               <>
                 <Loader2 size={20} className="animate-spin" /> &nbsp;
@@ -141,7 +160,7 @@ const AuthForm = ({ type }: {type: string}) => {
               ? "Don't have an account?"
               : "Already have an account?"}
             </p>
-            <Link href={type === 'sign-in' ? '/sign-up' : '/sign-in'} className="form-link text-indigo-600">
+            <Link href={type === 'sign-in' ? '/sign-up' : '/sign-in'} className="form-link">
               {type === 'sign-in' ? 'Sign up' : 'Sign in'}
             </Link>
           </footer>   
