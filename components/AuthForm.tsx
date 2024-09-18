@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 //forms
 import { z } from "zod";
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -12,8 +13,10 @@ import { Button } from '@/components/ui/button';
 import CustomFormField from './CustomFormField';
 import { authFormSchema } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
+import { signIn, signUp } from '@/lib/actions/user.actions';
 
 const AuthForm = ({ type }: {type: string}) => {
+  const router = useRouter();
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -33,9 +36,31 @@ const AuthForm = ({ type }: {type: string}) => {
   const onSubmit = async(data: z.infer<typeof formSchema>) => {
     setIsLoading(true);
     try {
+      if(type === 'sign-up') {
+        const userData = {
+          name: data.name,
+          email: data.email,
+          password: data.password
+        }
+
+        const newUser = await signUp(userData);
+        if (newUser?.success) {
+          setUser(newUser.user);
+          router.push('/');
+        }
+      }
       
+      if(type ==='sign-in') {
+        const response = await signIn({
+          email: data.email,
+          password: data.password
+        })
+        if(response) router.push('/')
+      }
     } catch (error) {
-      
+      console.error(error)
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -97,7 +122,7 @@ const AuthForm = ({ type }: {type: string}) => {
           </>
          )} 
          <div className="flex flex-col gap-4">
-          <Button>
+          <Button disabled={isLoading}>
           {isLoading ? (
               <>
                 <Loader2 size={20} className="animate-spin" /> &nbsp;

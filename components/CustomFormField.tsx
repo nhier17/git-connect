@@ -21,9 +21,11 @@ interface CustomProps {
   placeholder?: string;
   iconSrc?: string;
   iconAlt?: string;
+  disabled?: boolean;
   children?: React.ReactNode;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
   return (
     <div className="flex rounded-md border border-dark-500 bg-dark-400">
