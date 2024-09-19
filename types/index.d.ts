@@ -14,3 +14,9 @@ declare type SearchParamProps = {
     email: string;
     password: string;
   }
+
+  declare interface SiderbarProps = {
+    name: string;
+    email: string;
+    userId: string;
+  };

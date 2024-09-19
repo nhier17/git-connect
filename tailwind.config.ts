@@ -47,6 +47,14 @@ const config: Config = {
           600: "#76828D",
           700: "#ABB8C4",
         },
+        black: {
+          1: "#15171C",
+          2: "#222429",
+          3: "#101114",
+          4: "#252525",
+          5: "#2E3036",
+          6: "#24272C",
+        },
       },
       backgroundImage: {
         "git-gradient": "linear-gradient(90deg, #0179FE 0%, #4893FF 100%)",
