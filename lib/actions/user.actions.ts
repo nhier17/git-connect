@@ -10,6 +10,22 @@ const {
   APPWRITE_USER_COLLECTION_ID: USER_COLLECTION_ID,
 } = process.env;
 
+//get userinfo
+export const getUserInfo = async ({ userId }: getUserInfoProps) => {
+  try {
+    const { database } = await createAdminClient();
+
+    const user = await database.listDocuments(
+      DATABASE_ID!,
+      USER_COLLECTION_ID!,
+      [Query.equal('userId', [userId])]
+    )
+
+    return parseStringify(user.documents[0]);
+  } catch (error) {
+    console.log(error)
+  }
+}
 export const signIn = async ({ email, password }: signInProps) => {
   try {
     const { account } = await createSessionClient();
@@ -25,8 +41,9 @@ export const signIn = async ({ email, password }: signInProps) => {
       secure: true,
     });
 
+    const user = await getUserInfo({ userId: session.userId });
     // Return session data 
-    return { success: true, session };
+    return parseStringify(user);
   } catch (error) {
     console.error("Sign-in error:", error.message || error);
   }
@@ -77,3 +94,28 @@ export const signUp = async ({ password, ...userData }: SignUpParams) => {
     console.error("Sign-up error:", error.message || error);
   }
 };
+
+//get logged in user
+export async function getLoggedInUser() {
+  try {
+    const { account } = await createSessionClient();
+    const result = await account.get();
+
+    const user = await getUserInfo({ userId: result.$id})
+    return parseStringify(user);
+  } catch (error) {
+    console.error("Sign-up error:", error.message || error);
+  }
+}
+
+//log out user
+export async function logOut() {
+  try {
+    const { account } = await createSessionClient();
+    cookies().delete('appwrite-session');
+
+    await account.deleteSession('current');
+  } catch (error) {
+    return null;
+  }
+}
