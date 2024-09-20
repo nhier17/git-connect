@@ -32,7 +32,7 @@ export const signIn = async ({ email, password }: signInProps) => {
     
     // Create session
     const session = await account.createEmailPasswordSession(email, password);
-
+    
     // Set the session in cookies securely
     cookies().set("appwrite-session", session.secret, {
       path: "/",
@@ -40,12 +40,13 @@ export const signIn = async ({ email, password }: signInProps) => {
       sameSite: "strict",
       secure: true,
     });
-
+    console.log('Session created:', session);
     const user = await getUserInfo({ userId: session.userId });
+    console.log("User info fetched:", user); 
     // Return session data 
     return parseStringify(user);
   } catch (error) {
-    console.error("Sign-in error:", error.message || error);
+    console.error("Sign-in error:", error);
   }
 };
 
@@ -79,7 +80,7 @@ export const signUp = async ({ password, ...userData }: SignUpParams) => {
 
     // Create a session for the new user
     const session = await account.createEmailPasswordSession(email, password);
-
+    
     // Set the session in cookies securely
     cookies().set("appwrite-session", session.secret, {
       path: "/",
@@ -91,7 +92,7 @@ export const signUp = async ({ password, ...userData }: SignUpParams) => {
     // Return the newly created user
     return  parseStringify(newUser);
   } catch (error) {
-    console.error("Sign-up error:", error.message || error);
+    console.error("Sign-up error:", error);
   }
 };
 
@@ -104,7 +105,7 @@ export async function getLoggedInUser() {
     const user = await getUserInfo({ userId: result.$id})
     return parseStringify(user);
   } catch (error) {
-    console.error("Sign-up error:", error.message || error);
+    console.error("Sign-up error:", error);
   }
 }
 

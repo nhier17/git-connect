@@ -32,29 +32,31 @@ const AuthForm = ({ type }: {type: string}) => {
   })
 
   //submit
-  const onSubmit = async(data: z.infer<typeof formSchema>) => {
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setIsLoading(true);
     try {
       if(type === 'sign-up') {
         const userData = {
-          name: data.name,
+          name: data.name!,
           email: data.email,
           password: data.password
         }
 
         const newUser = await signUp(userData);
-        if (newUser?.success) {
-          setUser(newUser.user);
+        if (newUser) {
+          setUser(newUser);
           router.push('/');
         }
       }
       
-      if(type ==='sign-in') {
-        const response = await signIn({
+      if(type === 'sign-in') {
+        const logged = await signIn({
           email: data.email,
           password: data.password
-        })
-        if(response) router.push('/')
+        });
+        console.log("response:", logged);
+        if(data) router.push('/');
+        
       }
     } catch (error) {
       console.error(error)
@@ -90,11 +92,11 @@ const AuthForm = ({ type }: {type: string}) => {
             </h1>
           </div>
       </header>
+
       {/* form fields */}
        <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
          {type === 'sign-up' && (
-          <>
         <CustomFormField
         control={form.control}
         name="name"
@@ -103,6 +105,7 @@ const AuthForm = ({ type }: {type: string}) => {
         iconSrc="/icons/user.svg"
         iconAlt="user"
         />
+      )}
         <CustomFormField
           control={form.control}
           name="email"
@@ -118,28 +121,7 @@ const AuthForm = ({ type }: {type: string}) => {
           iconSrc="/icons/password.svg"
           iconAlt="user"
         />
-         </>
-         )} 
-    {type === 'sign-in' && (
-      <>
-        <CustomFormField
-          control={form.control}
-          name="email"
-          label="Email"
-          placeholder="janedoe@gmail.com"
-          iconSrc="/icons/email.svg"
-          iconAlt="email"
-        />
-        <CustomFormField
-          control={form.control}
-          name="password"
-          label="Password"
-          iconSrc="/icons/password.svg"
-          iconAlt="password"
-        />
-      </>
-     )}
-
+          
          <div className="flex flex-col gap-4">
           <Button type="submit" disabled={isLoading} className="form-btn">
           {isLoading ? (
@@ -163,7 +145,7 @@ const AuthForm = ({ type }: {type: string}) => {
             <Link href={type === 'sign-in' ? '/sign-up' : '/sign-in'} className="form-link">
               {type === 'sign-in' ? 'Sign up' : 'Sign in'}
             </Link>
-          </footer>   
+          </footer>  
     </section>
   )
 }

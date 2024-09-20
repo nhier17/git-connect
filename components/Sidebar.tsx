@@ -7,7 +7,7 @@ import { useRouter,  usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { sidebarLinks } from '@/constants';
 import { Button } from './ui/button';
-import Footer from './Footer'
+import Footer from './Footer';
 
 const Sidebar = ({ user }: SidebarProps) => {
   const pathname = usePathname();
