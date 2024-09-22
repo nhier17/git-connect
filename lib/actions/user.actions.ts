@@ -105,7 +105,7 @@ export async function getLoggedInUser() {
     const user = await getUserInfo({ userId: result.$id})
     return parseStringify(user);
   } catch (error) {
-    console.error("Sign-up error:", error);
+    console.error("Loggd in error:", error);
   }
 }
 
@@ -113,9 +113,9 @@ export async function getLoggedInUser() {
 export async function logOut() {
   try {
     const { account } = await createSessionClient();
-    cookies().delete('appwrite-session');
+    cookies().delete("appwrite-session");
 
-    await account.deleteSession('current');
+    await account.deleteSession("current");
   } catch (error) {
     return null;
   }
