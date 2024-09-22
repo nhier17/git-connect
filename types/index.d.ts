@@ -10,7 +10,7 @@ declare type SearchParamProps = {
     email: string;
     password: string;
   };
-  declare interface signInProps {
+  declare interface signInProps = {
     email: string;
     password: string;
   }
@@ -20,3 +20,14 @@ declare type SearchParamProps = {
     email: string;
     userId: string;
   };
+
+ declare interface ProfileCardProps = {
+    user: {
+      name: string;
+      email: string;
+      bio: string;
+      education: string[];
+      workExperience: string[];
+      githubRepositories: string[];
+    };
+  }

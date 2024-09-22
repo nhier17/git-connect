@@ -50,6 +50,9 @@
       .text-30 {
         @apply text-[30px] leading-[38px];
       }
+      .text-32 {
+        @apply text-[32px] leading-normal;
+      }
     
       .text-36 {
         @apply text-[36px] leading-[44px];
@@ -139,7 +142,7 @@
 
     /* Sidebar */
   .sidebar {
-    @apply sticky left-0 top-0 flex w-fit flex-col  justify-between  border-none  bg-black-1 pt-8 text-[#FFFFFF] max-md:hidden lg:w-[270px] lg:pl-8;
+    @apply sticky left-0 top-0 flex w-fit flex-col  justify-between  border-none  bg-[#15171C] pt-8 text-white-1 max-md:hidden lg:w-[270px] lg:pl-8;
   }
     /* Footer */
     .footer {
