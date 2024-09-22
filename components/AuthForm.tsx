@@ -10,7 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { Form } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
-import CustomFormField from './CustomFormField';
+import CustomFormField, { FormFieldType } from './CustomFormField';
 import { authFormSchema } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
 import { signIn, signUp } from '@/lib/actions/user.actions';
@@ -39,7 +39,11 @@ const AuthForm = ({ type }: {type: string}) => {
         const userData = {
           name: data.name!,
           email: data.email,
-          password: data.password
+          password: data.password,
+          bio: data.bio!,
+          education: data.education?.split(',').map(item => item.trim()) || [],
+          workExperience: data.workExperience?.split(',').map(item => item.trim()) || [],
+          githubRepositories: data.githubRepositories?.split(',').map(item => item.trim()) || [],
         }
 
         const newUser = await signUp(userData);
@@ -97,7 +101,9 @@ const AuthForm = ({ type }: {type: string}) => {
        <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
          {type === 'sign-up' && (
+          <>
         <CustomFormField
+        fieldType={FormFieldType.INPUT}
         control={form.control}
         name="name"
         label="Full Name"
@@ -105,8 +111,39 @@ const AuthForm = ({ type }: {type: string}) => {
         iconSrc="/icons/user.svg"
         iconAlt="user"
         />
+        <CustomFormField
+        fieldType={FormFieldType.TEXTAREA}
+        control={form.control}
+        name="bio"
+        label="Bio"
+        placeholder="Tell us about yourself"
+    
+        />
+        <CustomFormField
+        fieldType={FormFieldType.TEXTAREA}
+        control={form.control}
+        name="education"
+        label="Education (comma-separated)"
+        placeholder="Your Education (e.g., University A, University B)"
+        />
+        <CustomFormField
+        fieldType={FormFieldType.TEXTAREA}
+        control={form.control}
+        name="workExperience"
+        label="Work Experience (comma-separated)"
+        placeholder="Tell us your experience (e.g., Company A, Company B)"
+        />
+        <CustomFormField
+        fieldType={FormFieldType.TEXTAREA}
+        control={form.control}
+        name="githubRepositories"
+        label="GitHub Repositories (comma-separated)"
+        placeholder="https://github.com/janedoe/my-repo, ..."
+        />
+        </>
       )}
         <CustomFormField
+        fieldType={FormFieldType.INPUT}
           control={form.control}
           name="email"
           label="Email"
@@ -115,6 +152,7 @@ const AuthForm = ({ type }: {type: string}) => {
           iconAlt="email"
         />
         <CustomFormField
+        fieldType={FormFieldType.INPUT}
           control={form.control}
           name="password"
           label="Password"

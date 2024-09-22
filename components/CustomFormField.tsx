@@ -9,10 +9,16 @@ import {
   FormMessage,
 } from './ui/form';
 import { Input } from './ui/input';
+import { Textarea } from './ui/textarea';
 import { z } from 'zod';
 import { authFormSchema } from '@/lib/utils';
 
 const formSchema = authFormSchema('sign-up');
+
+export enum FormFieldType {
+  INPUT = 'input',
+  TEXTAREA = 'textarea',
+}
 
 interface CustomProps {
   control: Control<z.infer<typeof formSchema>>;
@@ -27,6 +33,8 @@ interface CustomProps {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
+  switch (props.fieldType){
+    case FormFieldType.INPUT:
   return (
     <div className="flex rounded-md border border-dark-500 bg-dark-400">
       {props.iconSrc && (
@@ -48,7 +56,22 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
       </FormControl>
     </div>
   );
+  case FormFieldType.TEXTAREA:
+    return (
+      <FormControl>
+      <Textarea
+        placeholder={props.placeholder}
+        className="shad-textarea"
+        {...field}
+      />
+      </FormControl>
+    )
+    default:
+      return null;
+  
 };
+}
+
 
 const CustomFormField = (props: CustomProps) => {
   const { control, name, label } = props;
