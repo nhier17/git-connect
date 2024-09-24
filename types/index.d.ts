@@ -35,3 +35,8 @@ declare type SearchParamProps = {
   declare interface getUsersProps {
     userId: string;
   }
+  declare interface postCreationProps {
+    userId: string;
+    postData: string;
+    postId: string;
+  }

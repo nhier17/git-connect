@@ -30,3 +30,6 @@ export const authFormSchema = (type: 'sign-in' | 'edit-profile') => z.object({
   password: type === 'edit-profile' ? z.string().min(8).optional() : z.string().min(8),
 });
 
+export const postFormSchema = z.object({
+  content: z.string().min(1, 'Content is required'),
+});
