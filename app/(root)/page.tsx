@@ -1,9 +1,13 @@
 import HeaderBox from '@/components/HeaderBox';
-import { getLoggedInUser } from '@/lib/actions/user.actions';
+import DeveloperCard from '@/components/DeveloperCard';
+import { getLoggedInUser, getUsers } from '@/lib/actions/user.actions';
 
 export default async function Home() {
   //get the current user
   const loggedIn = await getLoggedInUser();
+
+  //all the users
+  const users =  await getUsers();
 
   return (
     <section className="home">
@@ -17,12 +21,16 @@ export default async function Home() {
         />
       </header>
 
-      {/* get developers posts*/}
-      <section>
-      developers posts
-      </section>
+      <div className="user_grid">
+      {users?.length > 0 ? (
+            users.map((user) => (
+              <DeveloperCard key={user.userId} user={user} />
+            ))
+          ) : (
+            <p className="text-gray-400">No developers found.</p>
+          )}
+        </div>
 
-      {/* Footer Section */}
       <footer className="text-center py-8">
         <p className="text-gray-400">&copy; 2024 GitConnect. All rights reserved.</p>
       </footer>

@@ -79,7 +79,7 @@ const AuthForm = ({ type }: {type: string}) => {
               height={34}
               alt="git logo"
             />
-            <h1 className="text-26 font-ibm-plex-serif font-bold text-white">GitConnect</h1>
+            <h1 className="text-26 font-ibm-plex-serif font-bold text-white-1">GitConnect</h1>
           </Link>
 
           <div className="flex flex-col gap-1 md:gap-3">
@@ -123,21 +123,21 @@ const AuthForm = ({ type }: {type: string}) => {
         fieldType={FormFieldType.TEXTAREA}
         control={form.control}
         name="education"
-        label="Education (comma-separated)"
+        label="Education"
         placeholder="Your Education (e.g., University A, University B)"
         />
         <CustomFormField
         fieldType={FormFieldType.TEXTAREA}
         control={form.control}
         name="workExperience"
-        label="Work Experience (comma-separated)"
+        label="Work Experience"
         placeholder="Tell us your experience (e.g., Company A, Company B)"
         />
         <CustomFormField
         fieldType={FormFieldType.TEXTAREA}
         control={form.control}
         name="githubRepositories"
-        label="GitHub Repositories (comma-separated)"
+        label="GitHub Repositories"
         placeholder="https://github.com/janedoe/my-repo, ..."
         />
         </>

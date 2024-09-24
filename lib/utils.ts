@@ -13,17 +13,20 @@ export function encryptId(id: string) {
   return btoa(id);
 }
 
-
-export const authFormSchema = (type: string) => z.object({
-  // sign up
+export const authFormSchema = (type: 'sign-in' | 'edit-profile') => z.object({
+  // Name is required for sign-up, optional for sign-in
   name: type === 'sign-in' ? z.string().optional() : z.string().min(3),
-   // Additional sign-up fields
-   bio: type === 'sign-in' ? z.string().optional() : z.string().optional(),
-   education: type === 'sign-in' ? z.string().optional() : z.string().optional(),
-   workExperience: type === 'sign-in' ? z.string().optional() : z.string().optional(),
-   githubRepositories: type === 'sign-in' ? z.string().optional() : z.string().optional(),
+  
+  // Additional fields that are optional for sign-in
+  bio: type === 'sign-in' ? z.string().optional() : z.string().optional(),
+  education: type === 'sign-in' ? z.string().optional() : z.string().optional(),
+  workExperience: type === 'sign-in' ? z.string().optional() : z.string().optional(),
+  githubRepositories: type === 'sign-in' ? z.string().optional() : z.string().optional(),
 
-  // both
+  // Email is required for both sign-in and edit profile
   email: z.string().email(),
-  password: z.string().min(8),
-})
+
+  // Password is required for sign-in, optional for edit-profile
+  password: type === 'edit-profile' ? z.string().min(8).optional() : z.string().min(8),
+});
+

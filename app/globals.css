@@ -15,6 +15,9 @@
 } 
 
 @layer utilities {
+  .user_grid {
+    @apply grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4;
+  }
     .text-10 {
         @apply text-[10px] leading-[14px];
       }
@@ -97,7 +100,7 @@
     @apply flex min-h-screen w-full max-w-[420px] flex-col justify-center gap-5 py-10 md:gap-8;
   }
   .form-btn {
-    @apply text-16 rounded-lg border border-gitGradient bg-git-gradient font-semibold text-[#FFFFFF];
+    @apply text-16 rounded-lg border border-gitGradient bg-git-gradient font-semibold text-white-2;
   }
   .shad-input-label {
     @apply text-14-medium text-dark-700 !important;

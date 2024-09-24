@@ -1,19 +1,55 @@
-import React from 'react';
-import { getLoggedInUser } from "@/lib/actions/user.actions";
+"use client";
+
+import React, { useState, useEffect } from 'react';
 import LoaderSpinner from '@/components/LoaderSpinner';
 import ProfileCard from '@/components/ProfileCard';
+import EditProfileForm from '@/components/EditProfileForm';
+import { getUserById } from '@/lib/actions/user.actions';
 import { FaUser, FaEnvelope, FaBook, FaBriefcase, FaGithub } from 'react-icons/fa';
 
-const Profile = async ({ params }: { params: { profileId: string } }) => {
-  const user = await getLoggedInUser(); 
+const Profile = ({ params }: { params: { profileId: string } }) => {
+  const [isEditing, setIsEditing] = useState(false); 
+  const [user, setUser] = useState(null);
+  
 
-  if (!user) return <LoaderSpinner />; 
+  const userId = params.profileId;
+
+  // Fetch user data 
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const fetchedUser = await getUserById({ userId });
+        setUser(fetchedUser);
+      } catch (error) {
+        console.error('Error fetching user:', error);
+      }
+    };
+
+    fetchUser();
+  }, [userId]);
+
+
+  if (!user) return <LoaderSpinner />
 
   return (
     <section className="py-9 flex flex-col">
-      <h1 className="text-20 font-bold text-white-1 max-md:text-center">GitConnect Profile</h1>
-      <ProfileCard user={user} />
-      
+      <h1 className="text-2xl font-bold text-white-1 max-md:text-center">GitConnect Profile</h1>
+      {!isEditing ? (
+        <>
+          <ProfileCard user={user} />
+          <div className="flex justify-end mt-4">
+            <button 
+              className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition duration-200"
+              onClick={() => setIsEditing(true)}
+            >
+              Edit Profile
+            </button>
+          </div>
+        </>
+      ) : (
+        <EditProfileForm user={user} onClose={() => setIsEditing(false)} />
+      )}
+    
       <div className="flex flex-col gap-6 mt-9">
         <section className="bg-gray-900 px-4 py-8 rounded-lg">
           <div className="flex items-center gap-4 mb-4">

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use server';
 
 import { ID,Query } from "node-appwrite";
@@ -119,4 +120,57 @@ export async function logOut() {
   } catch (error) {
     return null;
   }
+}
+//get users
+export const getUsers = async () => {
+  try {
+    const { database } = await createAdminClient();
+    const users = await database.listDocuments(
+      DATABASE_ID!,
+      USER_COLLECTION_ID!,
+    )
+  
+    return parseStringify(users.documents);
+  } catch (error) {
+    
+  }
+}
+
+//get user by id 
+export const getUserById = async ({ userId }: getUsersProps) => {
+  try {
+    const { database } = await createAdminClient();
+
+    const user = await database.listDocuments(
+      DATABASE_ID!, 
+      USER_COLLECTION_ID!, 
+      [Query.equal('userId', userId)]
+    );
+
+    // Check if any users were returned
+    if (user.documents.length === 0) {
+      throw new Error('User not found');
+    }
+
+    return  parseStringify(user.documents[0]);
+  } catch (error) {
+    console.error('Error getting user:', error);
+  }
+};
+
+//update user profile
+export async function updateUserProfile(userId: string, userData: any) {
+try {
+  const { database } = await createAdminClient();
+  const updatedUser = await database.updateDocument(
+    DATABASE_ID!,
+    USER_COLLECTION_ID!,
+    userId,
+    userData,
+  )
+  
+  return parseStringify(updatedUser);
+} catch (error) {
+  console.error('Error updating user profile', error);
+}
 }

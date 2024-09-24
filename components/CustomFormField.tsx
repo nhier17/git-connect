@@ -49,9 +49,9 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
       <FormControl>
         <Input
           placeholder={props.placeholder}
-          className="shad-input border-0 text-white"
           type={props.name === 'password' ? 'password' : 'text'}
           {...field}
+          className="shad-input border-0 text-white-2"
         />
       </FormControl>
     </div>
@@ -61,7 +61,7 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
       <FormControl>
       <Textarea
         placeholder={props.placeholder}
-        className="shad-textarea"
+        className="shad-textarea text-white-1"
         {...field}
       />
       </FormControl>
