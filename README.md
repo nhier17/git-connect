@@ -1,6 +1,6 @@
 <div align="center">
   <br />
-      <img src="https://github.com/nhier17/git-connect/blob/main/public/icons/home.svg" alt="Project Banner">
+      <img src="https://github.com/nhier17/git-connect/blob/main/public/icons/home2.png" alt="Project Banner">
     
   <br />
 
