@@ -1,4 +1,5 @@
 import Sidebar from "@/components/Sidebar";
+import MobileNav from "@/components/MobileNav";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { getLoggedInUser } from "@/lib/actions/user.actions";
@@ -26,6 +27,7 @@ export default async function RootLayout({
                 height={30}
                 alt="menu icon"
               />
+              <MobileNav />
             </div>
             <div className="flex flex-col md:pb-14">
               {children}

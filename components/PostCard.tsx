@@ -59,7 +59,6 @@ const PostCard = ({ post, userId }: PostCardProps) => {
       <div className="mb-4">
         <p className="text-lg font-semibold text-white-1">{post.content}</p>
       </div>
-      <div className="flex flex-col sm:flex-row items-center justify-between text-gray-400">
       <div className="flex items-center space-x-4">
         <motion.div
           whileHover={{ scale: 1.2 }}
@@ -67,7 +66,7 @@ const PostCard = ({ post, userId }: PostCardProps) => {
           className="cursor-pointer flex items-center space-x-1"
         >
           <AiFillLike className={`text-blue-500 ${isLoading ? 'animate-pulse' : ''}`} size={24} />
-          <span>{likes}</span> 
+          <span className="text-white-2">{likes}</span> 
         </motion.div>
         <motion.div
           whileHover={{ scale: 1.2 }}
@@ -75,13 +74,12 @@ const PostCard = ({ post, userId }: PostCardProps) => {
           className="cursor-pointer flex items-center space-x-1"
         >
           <AiFillDislike className={`text-red-500 ${isLoading ? 'animate-pulse' : ''}`} size={24} />
-          <span>{dislikes}</span> 
+          <span className="text-white-2">{dislikes}</span> 
         </motion.div>
         <div className="flex items-center space-x-1">
           <FaCommentAlt className="text-green-400" size={20} />
-          <span>{comments.length}</span> 
+          <span className="text-white-2">{comments.length}</span> 
         </div>
-      </div>
       </div>
       
       <CommentsForm post={post} userId={userId} comments={comments} setComments={setComments} />
