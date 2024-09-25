@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import React from 'react';
 import CreatePostForm from '@/components/CreatePostForm';
 import { getLoggedInUser } from '@/lib/actions/user.actions';

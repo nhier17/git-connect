@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic';
+
+
 import HeaderBox from '@/components/HeaderBox';
 import DeveloperCard from '@/components/DeveloperCard';
 import { getLoggedInUser, getUsers } from '@/lib/actions/user.actions';

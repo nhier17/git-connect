@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import React from 'react';
 import { getPosts } from '@/lib/actions/post.actions';
 import { getLoggedInUser } from '@/lib/actions/user.actions';
