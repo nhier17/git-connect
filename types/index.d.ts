@@ -40,3 +40,22 @@ declare type SearchParamProps = {
     postData: string;
     postId: string;
   }
+  declare interface PostCardProps {
+      postId: string;
+      content: string;
+      likes: string[];
+      dislikes: string[];
+      comments: string[];
+      userId: string;
+  }
+
+  declare interface CommentCardProps {
+      commentId: string;
+      content: string;
+      userId: string;
+      postId: string;
+  }
+declare interface likePostProps {
+  postId: string;
+  userId: string;
+}
