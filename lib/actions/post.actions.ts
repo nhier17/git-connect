@@ -1,6 +1,6 @@
 "use server";
 
-import { ID } from "node-appwrite";
+import { ID, Query } from "node-appwrite";
 import { createAdminClient } from "../appwrite";
 import { parseStringify } from "../utils";
 
@@ -64,7 +64,7 @@ export const getPosts = async () => {
   }
 
   //delete post
-  export const deletePost = async () => {
+  export const deletePost = async (postId: string) => {
     try {
         const { database } = await createAdminClient();
 
@@ -164,5 +164,20 @@ export const likePost = async ({ postId, userId }: likePostProps) => {
         return parseStringify(comment);
     } catch (error) {
         console.error('Error creating comment',error);
+    }
+  }
+  //get comments
+  export const getComments = async (postId: string) => {
+    try {
+        const { database } = await createAdminClient();
+        const comments = await database.listDocuments(
+            DATABASE_ID!,
+            COMMENT_COLLECTION_ID!,
+            [Query.equal('postId', postId)] 
+        )
+      
+        return parseStringify(comments.documents);
+    } catch (error) {
+        console.error('Error fetching comments',error);
     }
   }

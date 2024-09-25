@@ -59,7 +59,7 @@ const AuthForm = ({ type }: {type: string}) => {
           password: data.password
         });
         console.log("response:", logged);
-        if(data) router.push('/');
+        if(logged) router.push('/');
         
       }
     } catch (error) {

@@ -11,7 +11,7 @@ const Post = async () => {
 if(!posts) return <LoaderSpinner />
 
   return (
-    <div className="container mx-auto mt-8">
+    <div className="flex flex-col gap-9 mt-9">
       <h1 className="text-2xl font-bold text-white-1 mb-4">Posts</h1>
       {posts.length > 0 ? (
         posts.map((post) => (
