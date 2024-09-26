@@ -22,8 +22,7 @@
 3. 🔋 [Features](#features)
 4. 🤸 [Quick Start](#quick-start)
 5. 🕸️ [Snippets](#snippets)
-6. 🔗 [Assets](#links)
-7. 🚀 [More](#more)
+6. 🚀 [More](#more)
 
 
 
@@ -241,5 +240,7 @@ export const logOutAccount = async () => {
 ## Contacts:
     phone: +254716903151
     email: abrahamnhier@gmail.com
+
+### LICENSE: [MIT License](link-to-license-file). 
 
 #
