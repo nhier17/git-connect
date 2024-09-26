@@ -116,8 +116,8 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
 
 ## Deployment
 Deployment was achieved through vercel
-Login  into vercel with your Github Account
-Add new project then import git-connect repository and add all enviromental variables
+- Login  into vercel with your Github Account
+- Add new project then import git-connect repository and add all enviromental variables
 ```bash
 vercel login
 ```
