@@ -3,9 +3,12 @@ export const dynamic = 'force-dynamic';
 import React from 'react';
 import CreatePostForm from '@/components/CreatePostForm';
 import { getLoggedInUser } from '@/lib/actions/user.actions';
+import { redirect } from "next/navigation";
 
 const CreatePost = async () => {
   const user = await getLoggedInUser();
+  
+  if(!user) redirect('/sign-in')
 
   return (
     <div className="container mx-auto p-4 md:p-8">

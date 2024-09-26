@@ -1,7 +1,6 @@
 import Sidebar from "@/components/Sidebar";
 import MobileNav from "@/components/MobileNav";
 import Image from "next/image";
-import { redirect } from "next/navigation";
 import { getLoggedInUser } from "@/lib/actions/user.actions";
 
 
@@ -12,7 +11,6 @@ export default async function RootLayout({
 }>) {
     const loggedIn = await getLoggedInUser();
     
-    if(!loggedIn) redirect('/sign-in');
 
   return (
     <div className="relative flex flex-col">

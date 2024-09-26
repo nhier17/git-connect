@@ -5,10 +5,13 @@ import { getPosts } from '@/lib/actions/post.actions';
 import { getLoggedInUser } from '@/lib/actions/user.actions';
 import PostCard from '@/components/PostCard';
 import LoaderSpinner from '@/components/LoaderSpinner';
+import { redirect } from "next/navigation";
 
 const Post = async () => {
   const posts = await getPosts();
   const user = await getLoggedInUser();
+
+  if(!user) redirect('/sign-in');  
 
 if(!posts) return <LoaderSpinner />
 
