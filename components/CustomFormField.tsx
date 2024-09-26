@@ -51,7 +51,7 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
           placeholder={props.placeholder}
           type={props.name === 'password' ? 'password' : 'text'}
           {...field}
-          className="shad-input border-0 text-white-2"
+          className="shad-input border-0 text-white-1"
         />
       </FormControl>
     </div>
@@ -61,7 +61,7 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
       <FormControl>
       <Textarea
         placeholder={props.placeholder}
-        className="shad-textarea text-white-1"
+        className="shad-textArea text-white-1"
         {...field}
       />
       </FormControl>
@@ -81,13 +81,11 @@ const CustomFormField = (props: CustomProps) => {
       control={control}
       name={name}
       render={({ field }) => (
-        <div className="flex flex-col gap-1.5">
-        <FormItem>
+        <FormItem className="flex-1">
           <FormLabel className="shad-input-label">{label}</FormLabel>
           <RenderInput field={field} props={props} />
           <FormMessage className="shad-error" />
         </FormItem>
-        </div>
       )}
     />
   );

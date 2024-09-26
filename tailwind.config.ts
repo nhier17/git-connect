@@ -23,9 +23,8 @@ const config: Config = {
           600: "#0D2A1F",
         },
         gitGradient: "#0179FE",
-        indigo: {
-          500: "#6172F3",
-          700: "#3538CD",
+        orange: {
+          1: "#F97535",
         },
         blue: {
           500: "#79B5EC",

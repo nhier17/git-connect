@@ -63,7 +63,7 @@ const Profile = ({ params }: { params: { profileId: string } }) => {
           </div>
         </section>
 
-        <section className="bg-gray-800 px-4 py-8 rounded-lg shadow-lg">
+        <section className="bg-gray-900 px-4 py-8 rounded-lg shadow-lg">
           <div className="flex items-center gap-4 mb-4">
             <FaBook className="text-3xl text-yellow-400" />
             <h2 className="text-2xl font-semibold text-white-1">Education</h2>
@@ -95,7 +95,7 @@ const Profile = ({ params }: { params: { profileId: string } }) => {
           </div>
         </section>
 
-        <section className="bg-gray-800 px-4 py-8 rounded-lg">
+        <section className="bg-gray-900 px-4 py-8 rounded-lg">
           <div className="flex items-center gap-4 mb-4">
             <FaGithub className="text-3xl text-gray-400" />
             <h2 className="text-2xl font-semibold text-white-1">GitHub Repositories</h2>

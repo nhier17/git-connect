@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 
 const DeveloperCard = ({ user }) => {
   return (
-    <div className="bg-gray-800 rounded-lg shadow-lg transition transform hover:scale-105 hover:shadow-xl duration-300">
+    <div className="rounded-lg shadow-lg transition transform hover:scale-105 hover:shadow-xl duration-300">
       <div className="flex flex-col items-center gap-5 mb-4">
         <Image
           src={user.avatar || '/icons/avatar.jpeg'}

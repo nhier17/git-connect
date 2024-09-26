@@ -13,8 +13,9 @@ import Image from "next/image"
 import Link from "next/link"
 import { useRouter, usePathname } from "next/navigation"
 import { Button } from './ui/button';
+import Footer from './Footer';
 
-const MobileNav = () => {
+const MobileNav = ({ user }: MobileNavProps) => {
     const pathname = usePathname();
     const router = useRouter();
 
@@ -47,7 +48,9 @@ const MobileNav = () => {
                 })}
               </nav>
             </SheetClose>
+            <Footer user={user} type="mobile" />
           </div>
+         
         </SheetContent>   
       </Sheet> 
     </section>

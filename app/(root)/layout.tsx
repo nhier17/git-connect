@@ -25,7 +25,7 @@ export default async function RootLayout({
                 height={30}
                 alt="menu icon"
               />
-              <MobileNav />
+              <MobileNav user={loggedIn} />
             </div>
             <div className="flex flex-col md:pb-14">
               {children}
