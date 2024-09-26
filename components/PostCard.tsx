@@ -52,7 +52,7 @@ const PostCard = ({ post, userId }: PostCardProps) => {
 
   return (
     <motion.div
-      className="bg-gray-800 shadow-lg rounded-lg p-4 sm:p-6 mb-6"
+      className="bg-dark-400 shadow-lg rounded-lg p-4 sm:p-6 mb-6"
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.2 }}
     >

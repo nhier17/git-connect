@@ -17,14 +17,15 @@ const DeveloperCard = ({ user }) => {
       </div>
 
       <div className="flex justify-between items-center py-4 gap-2">
-        <Link href={`/profile/${user?.userId}`}>
+        <Link href={`/profile/${user?.userId}`} className="flex gap-3">
           <Button className="bg-blue-500 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-600 transition duration-200">
             View Profile
           </Button>
-        </Link>
+        
         <Button className="border border-blue-500 text-blue-500 px-4 py-2 rounded-lg hover:bg-blue-500 hover:text-white transition duration-200">
           Connect
         </Button>
+        </Link>
       </div>
     </div>
   );
