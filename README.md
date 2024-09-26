@@ -44,15 +44,19 @@ GitConnect is a social networking platform for developers to create profiles, sh
 
 ## <a name="features">🔋 Features</a>
 
-👉 **Sign Up and Sign In**: Users can create an account and log in securely..
+👉 **Sign Up and Sign In**: Users can create an account and log in securely.
+👉 **Public Access**: The list of all registered developers is publicly accessible. Visitors can browse through profiles without logging in. This list is fetched from the Appwrite backend and displayed in a responsive UI.
 
 👉 **Developer Profiles**: Each developer has a profile with personal details, education, work experience, and GitHub repositories.
 
-👉 **Edit Profile**: Users can update their profile details.
+👉 **Edit Profile**: Users can edit their profiles to update their personal information, education, work experience, and GitHub repository links. Only authenticated users can edit their own profile.
 
-👉 **Post Feed**: Users can share posts, comment on others' posts, and interact through likes/dislikes.
+👉 **Post Feed**: View posts: Display a list of posts from all developers.
+Create posts: Users can create new posts.
+Like/Dislike posts: Interact with posts by liking or disliking.
+Delete posts: Users can delete their own posts.
 
-👉 **Public Access**: Profiles and developer lists are accessible publicly, without the need to log in.
+👉 **Comment on Post**:Users can comment on posts, which allows for discussions and interaction. The number of comments is displayed along with the post.
 
 
 and many more, including code architecture and reusability
@@ -110,6 +114,14 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
+
+## Deployment
+Deployment was achieved through vercel
+Login  into vercel with your Github Account
+Add new project then import git-connect repository and add all enviromental variables
+```bash
+vercel login
+```
 
 ## <a name="snippets">🕸️ Snippets</a>
 
@@ -217,6 +229,17 @@ export const logOutAccount = async () => {
 
 </details>
 
+## <a name="more">🚀 More</a>
+### Future Enhancements
+- Search Functionality: Implement a search bar to allow users to search for developers by name or skill set.
+- Profile Image Upload: Allow users to upload profile images.
+- Notifications: Notify users when someone likes or comments on their posts.
+- Following System: Users can follow other developers to receive updates on their posts.
 
+
+## Author: Abraham Nhier 
+## Contacts:
+    phone: +254716903151
+    email: abrahamnhier@gmail.com
 
 #
