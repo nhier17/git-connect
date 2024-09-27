@@ -8,6 +8,7 @@ import { getLoggedInUser, getUsers } from '@/lib/actions/user.actions';
 export default async function Home() {
   //get the current user
   const loggedIn = await getLoggedInUser();
+  console.log('logged',loggedIn);
 
   //all the users
   const users =  await getUsers();

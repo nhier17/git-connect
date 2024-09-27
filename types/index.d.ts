@@ -22,14 +22,12 @@ declare type SearchParamProps = {
   };
 
  declare interface ProfileCardProps  {
-    user: {
       name: string;
       email: string;
       bio: string;
       education: string[];
       workExperience: string[];
       githubRepositories: string[];
-    };
   }
 
   declare interface getUsersProps {
@@ -58,4 +56,9 @@ declare type SearchParamProps = {
 declare interface likePostProps {
   postId: string;
   userId: string;
+}
+
+declare interface FooterProps {
+  user: ProfileCardProps;
+  type?: 'mobile' | 'desktop'
 }
