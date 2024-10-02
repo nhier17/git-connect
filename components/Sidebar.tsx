@@ -3,15 +3,13 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter,  usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { sidebarLinks } from '@/constants';
-import { Button } from './ui/button';
 import Footer from './Footer';
 
 const Sidebar = ({ user }: SidebarProps) => {
   const pathname = usePathname();
-  const router = useRouter();
   return (
     <section  className="sidebar">
         <nav className="flex flex-col gap-6">

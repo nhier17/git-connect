@@ -30,11 +30,10 @@ export const getUserInfo = async ({ userId }: getUserInfoProps) => {
 
 export const signIn = async ({ email, password }: signInProps) => {
   try {
-    const { account } = await createSessionClient();
+    const { account } = await createAdminClient();
     
     // Create session
     const session = await account.createEmailPasswordSession(email, password);
-    console.log(session);
     
     cookies().set("developer-session", session.secret, {
       path: "/",
@@ -118,7 +117,9 @@ export const logOutAccount = async () => {
     const { account } = await createSessionClient();
 
      cookies().delete("developer-session");
+
      await account.deleteSession("current");
+     console.log('Logged out successfully')
   
   } catch (error) {
     return null;

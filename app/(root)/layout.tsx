@@ -10,7 +10,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
     const loggedIn = await getLoggedInUser();
-    
 
   return (
     <div className="relative flex flex-col">

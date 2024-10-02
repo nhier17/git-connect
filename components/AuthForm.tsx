@@ -37,12 +37,12 @@ const AuthForm = ({ type }: {type: string}) => {
       if(type === 'sign-up') {
         const userData = {
           name: data.name!,
-          email: data.email,
-          password: data.password,
           bio: data.bio!,
           education: data.education?.split(',').map(item => item.trim()) || [],
           workExperience: data.workExperience?.split(',').map(item => item.trim()) || [],
           githubRepositories: data.githubRepositories?.split(',').map(item => item.trim()) || [],
+          email: data.email,
+          password: data.password,
         }
 
         const newUser = await signUp(userData);
@@ -56,7 +56,6 @@ const AuthForm = ({ type }: {type: string}) => {
           email: data.email,
           password: data.password
         });
-        console.log("response:", logged);
         if(logged) router.push('/');
         
       }
