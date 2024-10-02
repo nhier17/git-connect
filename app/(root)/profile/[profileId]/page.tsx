@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import LoaderSpinner from '@/components/LoaderSpinner';
 import ProfileCard from '@/components/ProfileCard';
 import EditProfileForm from '@/components/EditProfileForm';
+import { Button } from '@/components/ui/button';
 import { getUserById } from '@/lib/actions/user.actions';
 import { FaUser, FaEnvelope, FaBook, FaBriefcase, FaGithub } from 'react-icons/fa';
 
@@ -31,6 +32,12 @@ const Profile = ({ params }: { params: { profileId: string } }) => {
 
   if (!user) return <LoaderSpinner />
 
+  //update profile 
+  const handleUpdateProfile = (updatedUSer) => {
+    setUser(updatedUSer);
+    setIsEditing(false);
+  }
+
   return (
     <section className="py-9 flex flex-col">
       <h1 className="text-2xl font-bold text-white-1 max-md:text-center">GitConnect Profile</h1>
@@ -38,16 +45,16 @@ const Profile = ({ params }: { params: { profileId: string } }) => {
         <>
           <ProfileCard user={user} />
           <div className="flex justify-end mt-4">
-            <button 
+            <Button 
               className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition duration-200"
               onClick={() => setIsEditing(true)}
             >
               Edit Profile
-            </button>
+            </Button>
           </div>
         </>
       ) : (
-        <EditProfileForm user={user} onClose={() => setIsEditing(false)} />
+        <EditProfileForm user={user} onClose={() => setIsEditing(false)} onUpdateProfile={handleUpdateProfile} />
       )}
     
       <div className="flex flex-col gap-6 mt-9">

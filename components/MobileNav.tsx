@@ -11,13 +11,11 @@ import { sidebarLinks } from "@/constants"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
-import { useRouter, usePathname } from "next/navigation"
-import { Button } from './ui/button';
+import { usePathname } from "next/navigation"
 import Footer from './Footer';
 
 const MobileNav = ({ user }: MobileNavProps) => {
     const pathname = usePathname();
-    const router = useRouter();
 
   return (
     <section>
@@ -48,7 +46,9 @@ const MobileNav = ({ user }: MobileNavProps) => {
                 })}
               </nav>
             </SheetClose>
+            <div className="flex-center w-full pb-14 px-4">
             <Footer user={user} type="mobile" />
+            </div>
           </div>
          
         </SheetContent>   

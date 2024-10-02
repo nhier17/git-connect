@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import CustomFormField, { FormFieldType } from './CustomFormField';
 import { authFormSchema } from '@/lib/utils';
 
-const EditProfileForm = ({ user, onClose }) => {
+const EditProfileForm = ({ user, onClose, onUpdateProfile }) => {
   const [isLoading, setIsLoading] = useState(false);
   const formSchema = authFormSchema('edit-profile');
 
@@ -43,6 +43,7 @@ const EditProfileForm = ({ user, onClose }) => {
       };
       const updatedUser = await updateUserProfile(user.$id, userData);
       if(updatedUser) {
+        onUpdateProfile(updatedUser);
         onClose();
       }
     } catch (error) {

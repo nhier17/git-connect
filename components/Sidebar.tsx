@@ -33,7 +33,9 @@ const Sidebar = ({ user }: SidebarProps) => {
             );
           })}
         </nav>
-          <Footer user={user} />
+        <div className="flex-center w-full pb-14 px-4">
+            <Footer user={user} type="mobile" />
+            </div>
       </section>
   )
 }
